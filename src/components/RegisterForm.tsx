@@ -1,7 +1,29 @@
+import {useForm} from "react-hook-form";
+import axios from "axios";
+
+interface IForm {
+    name: string;
+    email: string;
+    phone: string;
+    useWhatsapp: string;
+}
+
 export function RegisterForm() {
+    const { handleSubmit } = useForm<IForm>();
+
+    const onSubmit = async (data: IForm) => {
+        try {
+            await axios.post("https://casa-do-leo-l4t7tof6lq-uc.a.run.app/newsletter", data);
+            alert("Cadastrado com sucesso!")
+        } catch (e) {
+            alert("Falha, tente novamente.");
+            console.error(e);
+        }
+    };
+
     return (
         <>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <div className={'grid grid-cols-5 gap-4'}>
                     <div className={'col-span-1 flex items-center justify-center'}>
                         <label htmlFor={'name'}>Nome: </label>

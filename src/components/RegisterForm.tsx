@@ -9,7 +9,7 @@ interface IForm {
 }
 
 export function RegisterForm() {
-    const { handleSubmit } = useForm<IForm>();
+    const { handleSubmit, register } = useForm<IForm>();
 
     const onSubmit = async (data: IForm) => {
         try {
@@ -28,22 +28,22 @@ export function RegisterForm() {
                     <div className={'col-span-1 flex items-center justify-center'}>
                         <label htmlFor={'name'}>Nome: </label>
                     </div>
-                    <input className={'p-4 bg-slate-200 rounded-lg col-span-4'} id={'name'} type={'text'}/>
+                    <input className={'p-4 bg-slate-200 rounded-lg col-span-4'} id={'name'} type={'text'} {...register('name')}/>
 
                     <div className={'col-span-1 flex items-center justify-center'}>
                         <label htmlFor={'email'}>Email: </label>
                     </div>
-                    <input className={'p-4 bg-slate-200 rounded-lg col-span-4'} id={'email'} type={'text'}/>
+                    <input className={'p-4 bg-slate-200 rounded-lg col-span-4'} id={'email'} type={'email'} {...register('email')}/>
 
                     <div className={'col-span-1 flex items-center justify-center'}>
                         <label htmlFor={'phone'}>Telefone: </label>
                     </div>
-                    <input className={'p-4 bg-slate-200 rounded-lg col-span-4'} id={'phone'} type={'text'}/>
+                    <input className={'p-4 bg-slate-200 rounded-lg col-span-4'} id={'phone'} type={'text'} {...register('phone')}/>
 
                     <div className={'col-span-2 flex items-center justify-center'}>
                         <label htmlFor={'phone'}>Contato por Whatsapp: </label>
                     </div>
-                    <input className={'p-4 bg-slate-200 rounded-lg col-span-3'} id={'phone'} type={'checkbox'}/>
+                    <input className={'p-4 bg-slate-200 rounded-lg col-span-3'} id={'useWhatsapp'} type={'checkbox'} {...register('useWhatsapp')}/>
 
                     <button
                         type={'submit'}
